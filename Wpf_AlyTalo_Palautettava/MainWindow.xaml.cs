@@ -265,43 +265,38 @@ namespace Wpf_AlyTalo_Palautettava
         //-------------------------------------------talon tilanteet kerto änni englanniksi--------------------
         private void BtnKerro_Click(object sender, RoutedEventArgs e)
         {
-            sayItAloud.SetOutputToDefaultAudioDevice();
-
-            if (keittio.Switched)
+            try
             {
-                try
+                sayItAloud.SetOutputToDefaultAudioDevice();
+                if (keittio.Switched)
                 {
-
-                sayItAloud.Speak("The Kitchen light is on");
+                    sayItAloud.Speak("The Kitchen light is on");
                 }
-                catch (Exception)
+                else
                 {
-
-                    
+                    sayItAloud.Speak("The Kitchen light is off");
                 }
+                if (olohuone.Switched)
+                {
+                    sayItAloud.Speak("The livingroom light is on");
 
+                }
+                else
+                {
+                    sayItAloud.Speak("The livingroom light is off");
+                }
+                sayItAloud.Speak("The temperature of the house is " + talo.Temperature.ToString() + " °C");
+                if (sauna1.switched)
+                {
+                    sayItAloud.Speak("The sauna is on and the temperature inside is " + sauna1.lampotila.ToString() + " °C ");
+                }
+                else
+                {
+                    sayItAloud.Speak("The sauna is turned off and the temperature inside is " + sauna1.lampotila.ToString() + " °C ");
+                }
             }
-            else
+            catch (Exception)
             {
-                sayItAloud.Speak("The Kitchen light is off");
-            }
-            if (olohuone.Switched)
-            {
-                sayItAloud.Speak("The livingroom light is on");
-
-            }
-            else
-            {
-                sayItAloud.Speak("The livingroom light is off");
-            }
-            sayItAloud.Speak("The temperature of the house is " + talo.Temperature.ToString() + " °C");
-            if (sauna1.switched)
-            {
-                sayItAloud.Speak("The sauna is on and the temperature inside is " + sauna1.lampotila.ToString() + " °C ");
-            }
-            else
-            {
-                sayItAloud.Speak("The sauna is turned off and the temperature inside is " + sauna1.lampotila.ToString() + " °C ");
             }
 
         }
