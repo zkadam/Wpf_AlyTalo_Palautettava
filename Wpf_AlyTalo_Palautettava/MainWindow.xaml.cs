@@ -145,8 +145,16 @@ namespace Wpf_AlyTalo_Palautettava
             asetettuJo = true;
             try
             {
-
+                //***************************************tahalleen tehty virhe, jota voimme  uipath testauksen varten, kun syötetään 50, se näyttää 52
+                if (int.Parse(txtTavoiteLampo.Text)==50)
+                {
+                    talo.TavoiteLampo = 52;
+                }
+                else
+                {
                 talo.TavoiteLampo = int.Parse(txtTavoiteLampo.Text);
+
+                }
 
 
             }
